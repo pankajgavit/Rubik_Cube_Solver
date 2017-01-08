@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Rubik Cube Solver</string>
+
+    <string name="hello_world">Welcome To Rubiks Cube Solver APP</string>
+    <string name="action_settings">Settings</string>
+    <string name="enter">Enter</string>
+    <string name="Text">Press Enter to Continue</string>
+	
+
+
+    <string name="save">Save Face</string>
+    <string name="next">Next Face</string>
+    <string name="radio_blue">Blue</string>
+    <string name="radio_red">Red</string>
+    <string name="radio_green">Green</string>
+    <string name="radio_orange">Orange</string>
+    <string name="radio_yellow">Yellow</string>
+    <string name="radio_white">White</string>
+    <string name="text_pick">Pick Color :</string>
+    <string name="keepyellow">(keep yellow face as top while filling colors)</string>
+    <string name="text_cube">Input Cube :</string>
+    <string name="keepgreen">(keep green face as top while filling colors)</string>
+    <string name="keepblue">(keep blue face as top while filling colors)</string>
+    <string name="text_solve">Solve Cube</string>
+        <string name="title_activity_solve">SolveActivity</string>
+    <string name="text_phase">Phases :</string>
+    <string name="text_steps">Steps :</string>
+    <string name="text_prev">Preview Faces :</string>
+    <string name="text_black">(black means no color)</string>
+    <string name="text_m">Total Moves :</string>
+    <string name="text_rotation">Rotation Guide :</string>
+    <string name="text_image">rotation guide</string>
+    <string name="text_desc">Objective :</string>
+    <string name="text_ins">Keep yellow face as top while rotating cube.</string>
+    <string name="text_desc_phase">(Phase Description)</string>
+</resources>
