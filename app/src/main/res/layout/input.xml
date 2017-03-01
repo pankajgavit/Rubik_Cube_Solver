@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
             android:onClick="manual"
             style="@style/Theme.AppCompat"
             android:clickable="true" />
+
     </LinearLayout>
 
     <LinearLayout

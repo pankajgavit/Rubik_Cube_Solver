@@ -31,6 +31,6 @@
     <string name="text_rotation">Rotation Guide :</string>
     <string name="text_image">rotation guide</string>
     <string name="text_desc">Objective :</string>
-    <string name="text_ins">Keep yellow face as top while rotating cube.</string>
+    <string name="text_ins">Keep yellow face as top and blue front while rotating cube.</string>
     <string name="text_desc_phase">(Phase Description)</string>
 </resources>

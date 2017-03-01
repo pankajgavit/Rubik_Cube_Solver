@@ -270,6 +270,24 @@ public class Manual extends ActionBarActivity {
     public void nextFace(View v){
         TextView textIns=(TextView)findViewById(R.id.textInstruction);
         Button btnMM=(Button)findViewById(R.id.btnMM);
+        Button btnTL=(Button)findViewById(R.id.btnTL);
+        Button btnBL=(Button)findViewById(R.id.btnBL);
+        Button btnML=(Button)findViewById(R.id.btnML);
+        Button btnTR=(Button)findViewById(R.id.btnTR);
+        Button btnTM=(Button)findViewById(R.id.btnTM);
+        Button btnMR=(Button)findViewById(R.id.btnMR);
+        Button btnBR=(Button)findViewById(R.id.btnBR);
+        Button btnBM=(Button)findViewById(R.id.btnBM);
+
+
+        btnTL.setBackgroundColor(Color.BLACK);
+        btnTM.setBackgroundColor(Color.BLACK);
+        btnTR.setBackgroundColor(Color.BLACK);
+        btnML.setBackgroundColor(Color.BLACK);
+        btnMR.setBackgroundColor(Color.BLACK);
+        btnBL.setBackgroundColor(Color.BLACK);
+        btnBM.setBackgroundColor(Color.BLACK);
+        btnBR.setBackgroundColor(Color.BLACK);
             switch (face) {
                 case 1:
                     btnMM.setBackgroundColor(Color.RED);

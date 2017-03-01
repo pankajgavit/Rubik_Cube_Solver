@@ -34,6 +34,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import static android.content.ContentValues.TAG;
+//OpenCV
+
+
 /**
  * Created by Pegasus on 19-03-2016.
  */
@@ -59,7 +63,7 @@ public class Camera_Input extends Activity {
             public void onClick(View v) {
 
                 System.out.println("The count is kkkjjkkgggugkgujkj   " +count);
-               // for (int i = 0; i < 6; i++) {
+                //for (int i = 0; i < 6; i++) {
                     dispatchTakePictureIntent();
                     System.out.println("The count is kkkjloooooooooopj   " + count);
                 //}
@@ -107,93 +111,7 @@ public class Camera_Input extends Activity {
         builder.show();
     }
 
-  /*  @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 1) {
-                File f = new File(Environment.getExternalStorageDirectory().toString());
-                for (File temp : f.listFiles()) {
-                    if (temp.getName().equals("temp.jpg")) {
-                        f = temp;
-                        break;
-                    }
-                }
-                try {
-                    Bitmap bitmap;
-                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 
-                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
-                            bitmapOptions);
-Log.d("tag","The msg " );
-                    viewImage.setImageBitmap(bitmap);
-Log.d("tag","themsg after ") ;
-
-                    String path = android.os.Environment
-                            .getExternalStorageDirectory()
-                            + File.separator
-                            + "Phoenix" + File.separator + "default";
-                    f.delete();
-                    OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    try {
-                        outFile = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                        outFile.flush();
-                        outFile.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (requestCode == 2) {
-                String dir = Environment.getExternalStorageDirectory().getAbsolutePath();
-                Uri selectedImage = data.getData();
-                String[] filePath = { MediaStore.Images.Media.DATA };
-                Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
-                c.moveToFirst();
-                int columnIndex = c.getColumnIndex(filePath[0]);
-                String picturePath = c.getString(columnIndex);
-                c.close();
-               // Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                Log.w("path of image from gallery......******************.........", picturePath + "");
-                viewImage.setImageBitmap(loadImage(picturePath));
-              //  LinearLayout rl = (LinearLayout) findViewById(R.id.viewImage);
-                //rl.addView(viewImage);
-                Log.w("path of image from gallery......******************.........", picturePath + "");
-            }
-        }
-    }
-
-    private Bitmap loadImage(String imgPath) {
-        BitmapFactory.Options options;
-        try {
-            options = new BitmapFactory.Options();
-            options.inSampleSize = 2;
-            Bitmap bitmap = BitmapFactory.decodeFile(imgPath, options);
-            return bitmap;
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-}
-*/
-
-    /*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == 1 && null != data) {
-            decodeUri(data.getData());
-        }
-    }
-
-    */
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private void dispatchTakePictureIntent() {
@@ -236,61 +154,124 @@ System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     int c7 = imagebitmap.getPixel(imagebitmap.getWidth() / 2, 3*imagebitmap.getHeight() / 4);
     int c8 = imagebitmap.getPixel(3*imagebitmap.getWidth() / 4, 3*imagebitmap.getHeight() / 4);
 
-    if(c1<-16400000&&c1>-17000000)  c1=1;
-    if(c1<-2500000&&c1>-5000000) c1=2;
-    if(c1<-14500000&&c1>-16400000) c1=3;
-    if(c1<-5800000&&c1>-9000000) c1=4;
-    if(c1<-9000000&&c1>-13000000) c1=5;
-    if(c1<-5000000&&c1>-5800000) c1=6;
+    int red1 = Color.red(c1);
+    int blue1 = Color.blue(c1);
+    int green1 = Color.green(c1);
+    int alpha1 = Color.alpha(c1);
 
-    if(c2<-16400000&&c2>-17000000)  c2=1;
-    if(c2<-2500000&&c2>-5000000) c2=2;
-    if(c2<-14500000&&c2>-16400000) c2=3;
-    if(c2<-5800000&&c2>-9000000) c2=4;
-    if(c2<-9000000&&c2>-13000000) c2=5;
-    if(c2<-5000000&&c2>-5800000) c2=6;
+    System.out.println("PIXEL 1 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
 
-    if(c3<-16400000&&c3>-17000000)  c3=1;
-    if(c3<-2500000&&c3>-5000000) c3=2;
-    if(c3<-14500000&&c3>-16400000) c3=3;
-    if(c3<-5800000&&c3>-9000000) c3=4;
-    if(c3<-9000000&&c3>-13000000) c3=5;
-    if(c3<-5000000&&c3>-5800000) c3=6;
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c1=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c1=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c1=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c1=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c1=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c1=6;
 
-    if(c4<-16400000&&c4>-17000000)  c4=1;
-    if(c4<-2500000&&c4>-5000000) c4=2;
-    if(c4<-14500000&&c4>-16400000) c4=3;
-    if(c4<-5800000&&c4>-9000000) c4=4;
-    if(c4<-9000000&&c4>-13000000) c4=5;
-    if(c4<-5000000&&c4>-5800000) c4=6;
+    red1 = Color.red(c2);
+    blue1 = Color.blue(c2);
+    green1 = Color.green(c2);
+    alpha1 = Color.alpha(c2);
 
-    if(c5<-16400000&&c5>-17000000)  c5=1;
-    if(c5<-2500000&&c5>-5000000) c5=2;
-    if(c5<-14500000&&c5>-16400000) c5=3;
-    if(c5<-5800000&&c5>-9000000) c5=4;
-    if(c5<-9000000&&c5>-13000000) c5=5;
-    if(c5<-5000000&&c5>-5800000) c5=6;
+    System.out.println("PIXEL 2 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
 
-    if(c6<-16400000&&c6>-17000000)  c6=1;
-    if(c6<-2500000&&c6>-5000000) c6=2;
-    if(c6<-14500000&&c6>-16400000) c6=3;
-    if(c6<-5800000&&c6>-9000000) c6=4;
-    if(c6<-9000000&&c6>-13000000) c6=5;
-    if(c6<-5000000&&c6>-5800000) c6=6;
 
-    if(c7<-16400000&&c7>-17000000)  c7=1;
-    if(c7<-2500000&&c7>-5000000) c7=2;
-    if(c7<-14500000&&c7>-16400000) c7=3;
-    if(c7<-5800000&&c7>-9000000) c7=4;
-    if(c7<-9000000&&c7>-13000000) c7=5;
-    if(c7<-5000000&&c7>-5800000) c7=6;
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c2=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c2=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c2=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c2=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c2=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c2=6;
 
-    if(c8<-16400000&&c8>-17000000)  c8=1;
-    if(c8<-2500000&&c8>-5000000) c8=2;
-    if(c8<-14500000&&c8>-16400000) c8=3;
-    if(c8<-5800000&&c8>-9000000) c8=4;
-    if(c8<-9000000&&c8>-13000000) c8=5;
-    if(c8<-5000000&&c8>-5800000) c8=6;
+    red1 = Color.red(c3);
+    blue1 = Color.blue(c3);
+    green1 = Color.green(c3);
+    alpha1 = Color.alpha(c3);
+
+    System.out.println("PIXEL 3 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c3=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c3=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c3=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c3=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c3=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c3=6;
+
+    red1 = Color.red(c4);
+    blue1 = Color.blue(c4);
+    green1 = Color.green(c4);
+    alpha1 = Color.alpha(c4);
+
+    System.out.println("PIXEL 4 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c4=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c4=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c4=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c4=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c4=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c4=6;
+
+    red1 = Color.red(c5);
+    blue1 = Color.blue(c5);
+    green1 = Color.green(c5);
+    alpha1 = Color.alpha(c5);
+
+    System.out.println("PIXEL 5 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c5=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c5=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c5=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c5=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c5=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c5=6;
+
+    red1 = Color.red(c6);
+    blue1 = Color.blue(c6);
+    green1 = Color.green(c6);
+    alpha1 = Color.alpha(c6);
+
+    System.out.println("PIXEL 6 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c6=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c6=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c6=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c6=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c6=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c6=6;
+
+    red1 = Color.red(c7);
+    blue1 = Color.blue(c7);
+    green1 = Color.green(c7);
+    alpha1 = Color.alpha(c7);
+
+    System.out.println("PIXEL 7 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c7=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c7=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c7=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c7=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c7=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c7=6;
+
+    red1 = Color.red(c8);
+    blue1 = Color.blue(c8);
+    green1 = Color.green(c8);
+    alpha1 = Color.alpha(c8);
+
+    System.out.println("PIXEL 8 :::  red : " + red1 + "blue : " + blue1 + "green : " + green1 + "alpha : " + alpha1);
+
+
+    if(red1 < 100 && blue1 > 100 && green1 <100)  c8=1;
+    if(red1 > 100 && blue1 < 100 && green1 <100) c8=2;
+    if(red1 < 100 && blue1 < 100 && green1 >100) c8=3;
+    if(red1 > 100 && blue1 < 100 && green1 <150) c8=4;
+    if(red1 > 100 && blue1 < 100 && green1 >150) c8=5;
+    if(red1 > 100 && blue1 > 100 && green1 >100) c8=6;
 
 
     System.out.println("COLORrrrrrrrrrrrrr   "+c1+"   "+c2+"  "+c3 +"   "+c4+"   "+c5+"  " +c6 +"   " +c7 + "    " +c8);
